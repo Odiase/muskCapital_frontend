@@ -90,7 +90,7 @@ const Tesla = () => {
       </section>
 
       <div className="invest_now_container">
-        <h2>Why Invest Now</h2>
+        <h2 style={{color:'black'}}>Why Invest Now</h2>
 
         <div className="card-grid feature-box reveal">
           <div className="card feature-box reveal">
