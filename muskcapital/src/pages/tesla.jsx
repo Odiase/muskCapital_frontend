@@ -18,7 +18,7 @@ const Tesla = () => {
   const navigate = useNavigate();
 
  const handleRowClick = (item) => {
-  navigate(`/details/${encodeURIComponent(item.tier)}`, {
+  navigate(`/details/tesla/${encodeURIComponent(item.tier)}`, {
     state: {
       ...item,
       stock_name: 'tesla',
