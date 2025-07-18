@@ -32,7 +32,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="stock-details-container">
+    <div className="stock-details-container" style={{backgroundColor:'white'}}>
       {modal && (
         <div className="modal-overlay">
           <Order modal={modal} setModal={setModal} stockData={stockData} />
@@ -202,7 +202,7 @@ useEffect(() => {
         {/* Trade Button */}
         <div className="trade-button-container">
           <button onClick={() => setModal(true)} className="trade-button">
-            Trade
+            Order
           </button>
         </div>
       </div>
