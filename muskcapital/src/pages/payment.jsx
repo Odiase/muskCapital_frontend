@@ -136,7 +136,7 @@ console.log({
       
     } finally {
       setIsProcessing(false);
-    }}else{navigate('/')
+    }}else{navigate('/')}
   };
 
   return (
