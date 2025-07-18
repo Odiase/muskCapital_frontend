@@ -10,6 +10,7 @@ const Portfolio = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+    const [totalValue, setTotalValue] = useState(0);
  useEffect(() => {
     const fetchPortfolio = async () => {
       const token = sessionStorage.getItem('access');
@@ -46,6 +47,17 @@ const Portfolio = () => {
 
     fetchPortfolio();
   }, [navigate]);
+    let total = 0;
+data?.stocks?.forEach(stock => {
+  const quantity = Number(stock.quantity);
+  const purchasePrice = parseFloat(stock.purchase_price);
+  const isTesla = stock.stock_name.toLowerCase() === 'tesla';
+  const currentPrice = purchasePrice * 1.1; // Simulated current value
+
+  total += isTesla ? purchasePrice : quantity * currentPrice;
+});
+setTotalValue(total);
+
   return (
     <div className="layout-container flex h-full grow flex-col">
       <MobileNavbar />
@@ -62,7 +74,9 @@ const Portfolio = () => {
             <div className="flex flex-wrap gap-4 px-0  py-6">
               <div className="flex min-w-72 flex-1 flex-col gap-2">
                 
-                <p className="text-white tracking-light text-[32px] font-bold leading-tight truncate">$12,345.67</p>
+               <p className="text-white tracking-light text-[32px] font-bold leading-tight truncate">
+  ${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+</p>
                 <div className="flex gap-1">
                   <p className="text-[#a5b6a0] text-base font-normal leading-normal">1Y</p>
                   <p className="text-[#0bda35] text-base font-medium leading-normal">+12.34%</p>
