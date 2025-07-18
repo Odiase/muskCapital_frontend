@@ -19,11 +19,11 @@ const[useramount,setUseramount] = useState(0);
     const isNeuralink = (stockData?.name || '').toLowerCase().includes('neuralink');
 
     if (isNeuralink) {
-      setAmount(userAmount + Math.ceil(useramount * 0.41));
+      setAmount(useramount + Math.ceil(useramount * 0.41));
     } else {
       const match = stockData?.return?.match(/\d+/);
       const returnRate = match ? parseFloat(match[0]) : 0;
-      const expected = userAmount + (userAmount * (returnRate / 100));
+      const expected = useramount + (useramount * (returnRate / 100));
       setAmount(Math.ceil(expected));
     }
   }
