@@ -4,7 +4,7 @@ import Order from './order';
 
 import teslaCar1 from '../assets/tesla.jpg';
 import spacex from '../assets/spacex_background.jpg';
-import neuralink from '../assets/neuralink.jpg';
+import neuralink from '../assets/neuralink1.jpg';
 import './details.css';
 
 const Details = () => {
