@@ -1,45 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import './order.css';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Order = ({ modal, setModal, stockData }) => {
   const [inputValue, setInputValue] = useState('');
   const [amount, setAmount] = useState(0);
-  const navigate = useNavigate();
-  const location = useLocation();
-  
-const maxRange = stockData?.range || Infinity;
- // fallback if range is undefined
+
+
+
 
   useEffect(() => {
-    const price = stockData?.price || 0;
+  const price = stockData?.price || 0;
+  const userAmount = parseFloat(inputValue) || 0;
 
-    if (stockData?.shares !== undefined) {
-      setAmount(Math.ceil(price * stockData.shares));
+  if (stockData?.shares !== undefined) {
+    setAmount(Math.ceil(price * stockData.shares));
+  } else {
+    const isNeuralink = (stockData?.name || '').toLowerCase().includes('neuralink');
+
+    if (isNeuralink) {
+      setAmount(userAmount + Math.ceil(userAmount * 0.41));
+    } else {
+      const match = stockData?.return?.match(/\d+/);
+      const returnRate = match ? parseFloat(match[0]) : 0;
+      const expected = userAmount + (userAmount * (returnRate / 100));
+      setAmount(Math.ceil(expected));
     }
-  }, [stockData]);
+  }
+}, [inputValue, stockData]);
+
 
   const handleInputChange = (e) => {
     const raw = e.target.value;
     const cleaned = raw.replace(/^0+(?=\d)/, '');
-    const numeric = parseFloat(cleaned) || 0;
-
-    if (numeric > maxRange) {
-      return; // stop input if above allowed range
-    }
-
     setInputValue(cleaned);
-    setAmount(numeric);
   };
 
+  const navigate = useNavigate();
   const payment = () => {
     navigate('/payment', {
       state: {
         stockData: {
           ...stockData,
-          amount: amount,
+          amount,
         },
-        userPayment: amount,
       },
     });
   };
@@ -69,11 +73,7 @@ const maxRange = stockData?.range || Infinity;
                 value={inputValue}
                 onChange={handleInputChange}
                 placeholder="0"
-                max={maxRange}
               />
-              {parseFloat(inputValue) > maxRange && (
-                <small style={{ color: 'red' }}>Max allowed: ${maxRange}</small>
-              )}
             </div>
           ) : (
             <div className="form-group">
@@ -89,7 +89,7 @@ const maxRange = stockData?.range || Infinity;
 
           <div className="form-group">
             <label className="form-label">
-              {stockData?.shares !== undefined ? 'Estimated Cost' : 'Investment Amount'}
+              {stockData?.shares !== undefined ? 'Estimated Cost' : 'Expected Return'}
             </label>
             <input type="number" className="form-input" value={amount} readOnly />
           </div>
@@ -111,6 +111,7 @@ const maxRange = stockData?.range || Infinity;
                   <span className="summary-value">{stockData.bonus}</span>
                 </div>
               )}
+
               {stockData.items?.length > 0 && (
                 <div className="stat-item">
                   <span className="stat-label">Benefit</span>
@@ -119,11 +120,14 @@ const maxRange = stockData?.range || Infinity;
               )}
               <div className="summary-row">
                 <span className="summary-label">
-                  {stockData?.shares !== undefined ? 'Estimated Cost' : 'Investment Amount'}
+                  {stockData?.shares !== undefined ? 'Estimated Cost' : 'Expected Return'}
                 </span>
                 <span className="summary-value">${amount}</span>
               </div>
-             
+              <div className="summary-row">
+                <span className="summary-label">Available Funds</span>
+                <span className="summary-value">$10,000.00</span>
+              </div>
             </div>
           </div>
 
