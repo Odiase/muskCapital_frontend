@@ -95,7 +95,7 @@ if (stockData != null){
       console.log('Payment successful:', data);
       
       
-      alert('Payment Confirmed!');
+      alert('Payment In Review');
       const purchase_date = data.requested_at?.split('T')[0]; // e.g., "2025-07-18"
 console.log({
         stock_name: stockData.stock_name,
@@ -127,8 +127,9 @@ console.log({
 
     const stockResult = await stockPostResponse.json();
     console.log('Stock saved:', stockResult);
-    navigate('/portfolio')
-    alert('Payment Confirmed & Stock Saved!');
+    
+    alert('Check portfolio in few minutes');
+      navigate('/index')
     } catch (err) {
         if (err) {
             console.error('Payment error:', err);
