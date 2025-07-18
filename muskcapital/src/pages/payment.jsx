@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../assets/styles/payment.css';
+
 
 import MobileNavbar from '../components/mobile-nav';
 import DesktopNav from '../components/desktop';
