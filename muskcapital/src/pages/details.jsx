@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import Order from './order';
-import { useLocation } from 'react-router-dom';
 
 import teslaCar1 from '../assets/tesla.jpg';
 import spacex from '../assets/spacex_background.jpg';
@@ -11,34 +10,32 @@ import './details.css';
 const Details = () => {
   const [modal, setModal] = useState(false);
   const [stockData, setStockData] = useState(null);
-  const { stockname } = useParams();
+  const { stockname, tier } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
-const location = useLocation();
+  useEffect(() => {
+    if (location?.state) {
+      setStockData(location.state);
+    }
+  }, [location]);
 
-
-
-useEffect(() => {
-  if (location?.state) {
-    setStockData(location.state); // object from state
-  }
-}, [location]);
-  const videoStyles = {
-    width: '100%',
-    maxWidth: '400px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-    outline: 'none',
+  const backgroundMap = {
+    tesla: teslaCar1,
+    spacex: spacex,
+    neuralink: neuralink,
   };
 
+  const backgroundImage = backgroundMap[stockname?.toLowerCase()] || teslaCar1;
+
   return (
-    <div className="stock-details-container" style={{backgroundColor:'white'}}>
+    <div className="stock-details-container" style={{ backgroundColor: 'white' }}>
       {modal && (
         <div className="modal-overlay">
           <Order modal={modal} setModal={setModal} stockData={stockData} />
         </div>
       )}
-      
+
       <div className="content-wrapper">
         {/* Header */}
         <div className="header">
@@ -50,9 +47,6 @@ useEffect(() => {
           <h2 className="title">{stockname} Stock Details</h2>
         </div>
 
-        {/* Mobile Video Section */}
-        
-
         {/* Main Content */}
         <div className="main-content">
           {/* Left Column */}
@@ -61,10 +55,11 @@ useEffect(() => {
             <div 
               className="stock-image"
               style={{
-                backgroundImage: stockname === 'spaceX' 
-                  ? `url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnzHFmZWgJWEzoHvcq57b8j4_TkIUmxaKWeOUqykM3ieR9FmEPS9liGsyRb9UVvZixCvW2fEbMQSJQf74sqvbVfzgH5rzIIcZIfb91mPikbGpO1pfVhJ4EeCF73Gmf8qTfgA_SLPnmDX3cy3OTC9ypek0tTwV8xzAjmSspw2IJ6Cfvlul7yO6vgMcZk8zIboawk8sfELYeDObruOn2qz3GMB9N37t8fDbD1DBwEL-pPImlyUo60_G1FOIGPgoLEHA0_GQOwQKf5g")`
-                  : `url("${teslaCar1}")`,
-                backgroundPosition: stockname === 'tesla' ? '50% 10%' : 'center'
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundPosition: stockname === 'tesla' ? '50% 10%' : 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                minHeight: '300px',
               }}
             />
 
@@ -72,15 +67,12 @@ useEffect(() => {
             <div className="price-section">
               <h2>Stock Price</h2>
               <div className="price-display">
-                <p className="current-price"> 315.65</p>
+                <p className="current-price">315.65</p>
                 <div className="price-change">
                   <span className="time-frame">1Y</span>
                   <span className="change-positive">+15%</span>
                 </div>
               </div>
-
-              {/* Chart */}
-              
             </div>
           </div>
 
@@ -88,76 +80,72 @@ useEffect(() => {
           <div className="right-column">
             {/* Key Statistics */}
             <div className="stats-section">
-  <h2>Key Statistics</h2>
-  <div className="stats-grid">
-    <div className="stat-item">
-      <span className="stat-label">Tier</span>
-      <span className="stat-value">
-        {stockData?.tier || stockData?.name || 'N/A'}
-      </span>
-    </div>
+              <h2>Key Statistics</h2>
+              <div className="stats-grid">
+                <div className="stat-item">
+                  <span className="stat-label">Tier</span>
+                  <span className="stat-value">
+                    {stockData?.tier || stockData?.name || 'N/A'}
+                  </span>
+                </div>
 
-    {stockData?.shares !== undefined ? (
-      <>
-        <div className="stat-item">
-          <span className="stat-label">Shares</span>
-          <span className="stat-value">{stockData.shares}</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-label">Amount</span>
-          <span className="stat-value">{stockData.amount}</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-label">Return</span>
-          <span className="stat-value">{stockData.return}</span>
-        </div>
-      </>
-    ) : stockData?.profit ? (
-      <>
-        <div className="stat-item">
-          <span className="stat-label">Range</span>
-          <span className="stat-value">{stockData.range || 'N/A'}</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-label">Return</span>
-          <span className="stat-value">{stockData.return || 'N/A'}</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-label">Profit</span>
-          <span className="stat-value">{stockData.profit || 'N/A'}</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-label">Bonus</span>
-          <span className="stat-value">{stockData.bonus || 'N/A'}</span>
-        </div>
-      </>
-    ) : stockData?.items ? (
-      <>
-        <div className="stat-item">
-          <span className="stat-label">Range</span>
-          <span className="stat-value">{stockData.range}</span>
-        </div>
-       <div className="stat-item">
-  <span className="stat-label">Benefit</span>
-  <span className="stat-value">{stockData.items?.[0] || 'N/A'}</span>
-</div>
+                {stockData?.shares !== undefined ? (
+                  <>
+                    <div className="stat-item">
+                      <span className="stat-label">Shares</span>
+                      <span className="stat-value">{stockData.shares}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Amount</span>
+                      <span className="stat-value">{stockData.amount}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Return</span>
+                      <span className="stat-value">{stockData.return}</span>
+                    </div>
+                  </>
+                ) : stockData?.profit ? (
+                  <>
+                    <div className="stat-item">
+                      <span className="stat-label">Range</span>
+                      <span className="stat-value">{stockData.range || 'N/A'}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Return</span>
+                      <span className="stat-value">{stockData.return || 'N/A'}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Profit</span>
+                      <span className="stat-value">{stockData.profit || 'N/A'}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Bonus</span>
+                      <span className="stat-value">{stockData.bonus || 'N/A'}</span>
+                    </div>
+                  </>
+                ) : stockData?.items ? (
+                  <>
+                    <div className="stat-item">
+                      <span className="stat-label">Range</span>
+                      <span className="stat-value">{stockData.range}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Benefit</span>
+                      <span className="stat-value">{stockData.items?.[0] || 'N/A'}</span>
+                    </div>
+                  </>
+                ) : null}
 
-      </>
-    ) : null}
-
-    <div className="stat-item">
-      <span className="stat-label">Market Cap</span>
-      <span className="stat-value">$50B</span>
-    </div>
-    <div className="stat-item">
-      <span className="stat-label">P/E Ratio</span>
-      <span className="stat-value">25.5</span>
-    </div>
-  </div>
-</div>
-            {/* News Section */}
-            
-          
+                <div className="stat-item">
+                  <span className="stat-label">Market Cap</span>
+                  <span className="stat-value">$50B</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-label">P/E Ratio</span>
+                  <span className="stat-value">25.5</span>
+                </div>
+              </div>
+            </div>
 
             {/* Analyst Ratings */}
             <div className="ratings-section">
