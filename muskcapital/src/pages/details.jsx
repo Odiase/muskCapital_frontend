@@ -72,7 +72,7 @@ useEffect(() => {
             <div className="price-section">
               <h2>Stock Price</h2>
               <div className="price-display">
-                <p className="current-price"> {stockData.price ?? stockData.return ?? 315.65}}</p>
+                <p className="current-price"> {stockData?.price ?? stockData?.return ?? 315.65}</p>
                 <div className="price-change">
                   <span className="time-frame">1Y</span>
                   <span className="change-positive">+15%</span>
