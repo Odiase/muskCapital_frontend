@@ -6,12 +6,12 @@ const Order = ({ modal, setModal, stockData }) => {
   const [inputValue, setInputValue] = useState('');
   const [amount, setAmount] = useState(0);
 
-const[useramount,setUseramount] = useState(0);
+
 
 
   useEffect(() => {
   const price = stockData?.price || 0;
-  setUseramount(parseFloat(inputValue) || 0);
+  const userAmount = parseFloat(inputValue) || 0;
 
   if (stockData?.shares !== undefined) {
     setAmount(Math.ceil(price * stockData.shares));
@@ -19,11 +19,11 @@ const[useramount,setUseramount] = useState(0);
     const isNeuralink = (stockData?.name || '').toLowerCase().includes('neuralink');
 
     if (isNeuralink) {
-      setAmount(useramount + Math.ceil(useramount * 0.41));
+      setAmount(userAmount + Math.ceil(userAmount * 0.41));
     } else {
       const match = stockData?.return?.match(/\d+/);
       const returnRate = match ? parseFloat(match[0]) : 0;
-      const expected = useramount + (useramount * (returnRate / 100));
+      const expected = userAmount + (userAmount * (returnRate / 100));
       setAmount(Math.ceil(expected));
     }
   }
@@ -42,7 +42,7 @@ const[useramount,setUseramount] = useState(0);
       state: {
         stockData: {
           ...stockData,
-          useramount,
+          amount,
         },
       },
     });
@@ -124,7 +124,10 @@ const[useramount,setUseramount] = useState(0);
                 </span>
                 <span className="summary-value">${amount}</span>
               </div>
-              
+              <div className="summary-row">
+                <span className="summary-label">Available Funds</span>
+                <span className="summary-value">$10,000.00</span>
+              </div>
             </div>
           </div>
 
