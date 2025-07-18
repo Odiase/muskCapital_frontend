@@ -16,7 +16,7 @@ const styles = `
   }
 
   .login-content {
-    width: 84vw;
+    width: 97%;
     height: 800px;
     margin: 0 auto;
     display: flex;
@@ -24,7 +24,7 @@ const styles = `
     align-items: center;
     justify-content: center;
     gap: 0;
-    padding: 2rem;
+    padding: 1rem;
   }
 
   @media (min-width: 1024px) {
@@ -56,10 +56,10 @@ const styles = `
   .login-form-section {
     width: 100%;
     background-color: white;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 0.75rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    max-width: 28rem;
+    max-width: 32rem;
   }
 
   @media (min-width: 1024px) {
