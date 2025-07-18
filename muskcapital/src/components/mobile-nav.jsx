@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './navbar.css';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const MobileNavbar = ({ style }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
 
   // Check for access token in sessionStorage
-  useEffect(() => {
-    const accessToken = sessionStorage.getItem('access');
-    if (accessToken) {
-      setHasAccess(true);
-    }
-  }, []);
+ const location = useLocation();
+
+useEffect(() => {
+  const accessToken = sessionStorage.getItem('access');
+  setHasAccess(!!accessToken); // Update state accordingly
+}, [location]); // re-run on route change
+
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
