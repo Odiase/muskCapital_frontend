@@ -125,7 +125,7 @@ const [return,setReturn] = useState(0);
                 <span className="summary-label">
                   {stockData?.shares !== undefined ? 'Estimated Cost' : 'Expected Return'}
                 </span>
-                <span className="summary-value">${amount}</span>
+                <span className="summary-value">${return}</span>
               </div>
              
             </div>
