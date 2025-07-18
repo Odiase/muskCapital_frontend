@@ -32,7 +32,7 @@ const DesktopNav = ({style,name}) => {
     </li>
   ) : (
     <li>
-   <Link to="">{'Welcome ' ?? 'Profile'}</Link>
+   <Link to="">Welcome</Link>
     </li>
   )}
         </ul>
