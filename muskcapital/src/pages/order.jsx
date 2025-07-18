@@ -6,12 +6,12 @@ const Order = ({ modal, setModal, stockData }) => {
   const [inputValue, setInputValue] = useState('');
   const [amount, setAmount] = useState(0);
 
-
+const[useramount,setUseramount] = useState(0);
 
 
   useEffect(() => {
   const price = stockData?.price || 0;
-  const userAmount = parseFloat(inputValue) || 0;
+  setUseramount(parseFloat(inputValue) || 0);
 
   if (stockData?.shares !== undefined) {
     setAmount(Math.ceil(price * stockData.shares));
@@ -19,7 +19,7 @@ const Order = ({ modal, setModal, stockData }) => {
     const isNeuralink = (stockData?.name || '').toLowerCase().includes('neuralink');
 
     if (isNeuralink) {
-      setAmount(userAmount + Math.ceil(userAmount * 0.41));
+      setAmount(userAmount + Math.ceil(useramount * 0.41));
     } else {
       const match = stockData?.return?.match(/\d+/);
       const returnRate = match ? parseFloat(match[0]) : 0;
@@ -42,7 +42,7 @@ const Order = ({ modal, setModal, stockData }) => {
       state: {
         stockData: {
           ...stockData,
-          amount,
+          useramount,
         },
       },
     });
