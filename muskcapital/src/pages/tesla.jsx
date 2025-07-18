@@ -13,7 +13,7 @@ const Tesla = () => {
   { tier: 'Tier 5 – Institutional', shares: 1000, amount: '$315,650', return: '$150K–$200K',price:315.65 },
   { tier: 'Tier 6 – Anchor', shares: 2000, amount: '$631,300', return: '$300K–$400K' ,price:315.65}, 
   { tier: 'Tier 7 – Foundational', shares: 3000, amount: '$946,950', return: '$450K–$600K',price:315.65},
-  { tier: 'Tier 8 – Flagship', shares: '3,200+', amount: '$1,010,080+', return: '$500K–$670K+',price:315.65},
+  { tier: 'Tier 8 – Flagship', shares: '3,200', amount: '$1,010,080', return: '$500K–$670K+',price:315.65},
 ];
   const navigate = useNavigate();
 
@@ -181,11 +181,11 @@ const Tesla = () => {
           <tbody>
             {tiers.map((item, index) => (
               <tr key={index} onClick={() => handleRowClick(item)} style={{ cursor: 'pointer' }}>
-                <td>{item.tier}</td>
-                <td>{item.shares}</td>
-                <td>{item.amount}</td>
-                <td>{item.return}</td>
-              </tr>
+    <td>{item.tier}</td>
+    <td>{index === 7 ? `${item.shares}+` : item.shares}</td>
+    <td>{index === 7 ? `${item.amount}+` : item.amount}</td>
+    <td>{item.return}</td>
+  </tr>
             ))}
           </tbody>
         </table>
