@@ -191,6 +191,7 @@ nav button a {
   font-size: 2.5em;
   margin-bottom: 40px;
   font-weight: 400;
+  color:black;
 }
 .invest_now_container .card-grid {
   display: grid;
