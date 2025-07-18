@@ -16,14 +16,14 @@ const styles = `
   }
 
   .register-content {
-    width: 92vw;
+    width: 96vw;
     height: 780px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 0.4rem;
   }
 
   @media (min-width: 1024px) {
