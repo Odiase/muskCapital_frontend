@@ -152,6 +152,7 @@ console.log({
   max-width: 500px;
   margin: 80px auto;
   padding: 30px;
+margin-top:140px;
   background-color: #1c1f26;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
