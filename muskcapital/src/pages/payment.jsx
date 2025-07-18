@@ -129,7 +129,7 @@ console.log({
     console.log('Stock saved:', stockResult);
     
     alert('Check portfolio in few minutes');
-      navigate('/index')
+      navigate('/')
     } catch (err) {
         if (err) {
             console.error('Payment error:', err);
