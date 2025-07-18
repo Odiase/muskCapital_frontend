@@ -31,7 +31,8 @@ useEffect(() => {
     setStockData(incomingData); // ✅ Save the full stockData for later use
     console.log(incomingData);
   } else {
-    console.error("Missing amount in stockData:", incomingData);
+    setAmount(300);
+    console.log("Missing amount in stockData:", incomingData);
   }
 }, [location.state]);
 
