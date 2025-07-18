@@ -11,7 +11,7 @@ const SpaceXPage = () => {
   const navigate = useNavigate();
 
   const handleClick = (tier) => {
-  navigate(`/details/${tier.name}`, {
+  navigate(`/details/spacex/${tier.name}`, {
     state: {
       ...tier,
       stock_name: 'spacex',
