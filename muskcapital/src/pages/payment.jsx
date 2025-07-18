@@ -1,10 +1,10 @@
-ensure no unclosed component
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-
-
+import React, { useState, } from 'react';
+import '../assets/styles/payment.css';
+  import { useLocation } from 'react-router-dom';
+  import { useEffect } from 'react';
 import MobileNavbar from '../components/mobile-nav';
 import DesktopNav from '../components/desktop';
+import { useNavigate } from 'react-router-dom';
 const CryptoPayment = () => {
   const [selectedCrypto, setSelectedCrypto] = useState('');
   const [isBlurred, setIsBlurred] = useState(true);
