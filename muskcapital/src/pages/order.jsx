@@ -9,24 +9,26 @@ const [returnamount,setReturnamount] = useState(0);
 
 
 
-  useEffect(() => {
+ useEffect(() => {
   const price = stockData?.price || 0;
   const userAmount = parseFloat(inputValue) || 0;
 
   if (stockData?.shares !== undefined) {
-    setAmount(Math.ceil(price * stockData.shares));
-    setReturnamount(Math.ceil(price * stockData.shares))
+    const shares = parseFloat(stockData.shares.toString().replace(/,/g, '')) || 0;
+    const total = Math.ceil(price * shares);
+    setAmount(total);
+    setReturnamount(total);
   } else {
     const isNeuralink = (stockData?.name || '').toLowerCase().includes('neuralink');
 
     if (isNeuralink) {
       setReturnamount(userAmount + Math.ceil(userAmount * 0.41));
-      setAmount(userAmount)
+      setAmount(userAmount);
     } else {
       const match = stockData?.return?.match(/\d+/);
       const returnRate = match ? parseFloat(match[0]) : 0;
       const expected = userAmount + (userAmount * (returnRate / 100));
-      setAmount(userAmount)
+      setAmount(userAmount);
       setReturnamount(Math.ceil(expected));
     }
   }
