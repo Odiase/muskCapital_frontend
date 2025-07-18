@@ -28,7 +28,7 @@ function App() {
         
           <Route index element={<Index />} />
           <Route path='tesla' element={<TeslaPage />} />
-          <Route path='details/:stockname' element={<Details />} />
+          <Route path='details/:stockname/:tier' element={<Details />} />
           <Route path='spacex' element={<SpaceXPage />} />
           <Route path='login' element={<Login />} />
           <Route path='neuralink' element={<Neuralink />} />
