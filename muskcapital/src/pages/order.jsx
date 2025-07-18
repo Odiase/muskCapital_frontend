@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Order = ({ modal, setModal, stockData }) => {
   const [inputValue, setInputValue] = useState('');
   const [amount, setAmount] = useState(0);
-const [return,setReturn] = useState(0);
+const [returnamount,setReturnamount] = useState(0);
 
 
 
@@ -15,19 +15,19 @@ const [return,setReturn] = useState(0);
 
   if (stockData?.shares !== undefined) {
     setAmount(Math.ceil(price * stockData.shares));
-    setReturn(amount)
+    setReturnamount(amount)
   } else {
     const isNeuralink = (stockData?.name || '').toLowerCase().includes('neuralink');
 
     if (isNeuralink) {
-      setReturn(userAmount + Math.ceil(userAmount * 0.41));
+      setReturnamount(userAmount + Math.ceil(userAmount * 0.41));
       setAmount(userAmount)
     } else {
       const match = stockData?.return?.match(/\d+/);
       const returnRate = match ? parseFloat(match[0]) : 0;
       const expected = userAmount + (userAmount * (returnRate / 100));
       setAmount(userAmount)
-      setReturn(Math.ceil(expected));
+      setReturnamount(Math.ceil(expected));
     }
   }
 }, [inputValue, stockData]);
@@ -125,7 +125,7 @@ const [return,setReturn] = useState(0);
                 <span className="summary-label">
                   {stockData?.shares !== undefined ? 'Estimated Cost' : 'Expected Return'}
                 </span>
-                <span className="summary-value">${return}</span>
+                <span className="summary-value">${returnamount}</span>
               </div>
              
             </div>
