@@ -281,8 +281,8 @@ button {
 
 /* Rest of your existing styles... */
   `
-  return (
-    <MobileNavbar style={{height:'30px',marginTop:'-90px',paddingBottom:'0px'}}/>
+  return (<>
+    <MobileNavbar style={{height:'30px',marginTop:'-90px',paddingBottom:'0px',postion:'fixed',top:'0'}}/>
        <DesktopNav style={{height:'px',paddingTop:'0px'}}/>
     <div className="container">
 <style>{styles}</style>        
@@ -340,6 +340,7 @@ button {
         )}
       </div>
     </div>
+    </>
   );
 };
 
