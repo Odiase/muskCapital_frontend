@@ -24,17 +24,17 @@ useEffect(() => {
 }, [navigate]);
 useEffect(() => {
   const incomingData = location.state?.stockData;
-  const payment = location.state?.userPayment;
+  const userPayment = location.state?.userPayment ?? 300;
 
-  if (incomingData?.amount) {
-    const parsed = parseFloat(payment);
+  const parsed = parseFloat(userPayment);
+
+  if (incomingData) {
     setAmount(parsed);
-    setStockData(incomingData); // ✅ Save the full stockData for later use
-    console.log(incomingData);
+    setStockData(incomingData); // ✅ Save stock data
+    console.log('Received stockData:', incomingData);
   } else {
-    setAmount(300);
-    setStockData(null)
-    console.log("Missing amount in stockData:", incomingData);
+    setStockData(null);
+    console.log('Missing stockData:', incomingData);
   }
 }, [location.state]);
 
