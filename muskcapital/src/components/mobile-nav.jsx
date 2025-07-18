@@ -44,7 +44,7 @@ const MobileNavbar = ({style}) => {
               <Link to="/neuralink" onClick={toggleMenu}>Neuralink</Link>
             </li>
             <li className="mobile-menu-item">
-              <Link to="portfolio" onClick={toggleMenu}>Portfolio</Link>
+              <Link to="/portfolio" onClick={toggleMenu}>Portfolio</Link>
             </li>
             <li className="mobile-menu-item">
               <button className="mobile-login-btn">
