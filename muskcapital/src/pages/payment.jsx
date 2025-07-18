@@ -282,7 +282,7 @@ button {
 /* Rest of your existing styles... */
   `
   return (
-    <MobileNavbar style={{height:'60px',marginTop:'-90px'}}/>
+    <MobileNavbar style={{height:'30px',marginTop:'-90px',paddingBottom:'0px'}}/>
        <DesktopNav style={{height:'px',paddingTop:'0px'}}/>
     <div className="container">
 <style>{styles}</style>        
