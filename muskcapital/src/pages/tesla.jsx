@@ -182,8 +182,8 @@ const Tesla = () => {
             {tiers.map((item, index) => (
               <tr key={index} onClick={() => handleRowClick(item)} style={{ cursor: 'pointer' }}>
     <td>{item.tier}</td>
-    <td>{index === 5 ? `${item.shares}j` : item.shares}</td>
-    <td>{index === 7 ? `${item.amount}sd` : item.amount}</td>
+    <td>{index === 7 ? `${item.shares}+` : item.shares}</td>
+    <td>{index === 7 ? `${item.amount}+` : item.amount}</td>
     <td>{item.return}</td>
   </tr>
             ))}
