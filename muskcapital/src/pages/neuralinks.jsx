@@ -1,4 +1,4 @@
-urimport React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../assets/styles/neuralink.css';
 import Desktop from '../components/desktop';
 import MobileNavbar from '../components/mobile-nav';
