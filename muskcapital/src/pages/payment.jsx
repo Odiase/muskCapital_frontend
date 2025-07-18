@@ -1,10 +1,10 @@
-import React, { useState, } from 'react';
-import '../assets/styles/payment.css';
-  import { useLocation } from 'react-router-dom';
-  import { useEffect } from 'react';
+
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+
 import MobileNavbar from '../components/mobile-nav';
 import DesktopNav from '../components/desktop';
-import { useNavigate } from 'react-router-dom';
 const CryptoPayment = () => {
   const [selectedCrypto, setSelectedCrypto] = useState('');
   const [isBlurred, setIsBlurred] = useState(true);
@@ -24,17 +24,16 @@ useEffect(() => {
 }, [navigate]);
 useEffect(() => {
   const incomingData = location.state?.stockData;
-  const userPayment = location.state?.userPayment ?? 300;
 
-  const parsed = parseFloat(userPayment);
-
-  if (incomingData) {
+  if (incomingData?.amount) {
+    const parsed = parseFloat(incomingData.amount);
     setAmount(parsed);
-    setStockData(incomingData); // ✅ Save stock data
-    console.log('Received stockData:', incomingData);
+    setStockData(incomingData); // ✅ Save the full stockData for later use
+    console.log(incomingData);
   } else {
-    setStockData(null);
-    console.log('Missing stockData:', incomingData);
+    setAmount(300);
+    setStockData(null)
+    console.log("Missing amount in stockData:", incomingData);
   }
 }, [location.state]);
 
@@ -151,7 +150,7 @@ console.log({
 
 .container {
   max-width: 500px;
-  margin: 80px auto 0px auto;
+  margin: 80px auto;
   padding: 30px;
 margin-top:140px;
   background-color: #1c1f26;
@@ -282,11 +281,11 @@ button {
 
 /* Rest of your existing styles... */
   `
-  return (<>
-    <MobileNavbar style={{height:'30px',marginTop:'-90px',paddingBottom:'0px',postion:'fixed',top:'0',color:'white'}}/>
-       <DesktopNav style={{height:'px',paddingTop:'0px'}}/>
+  return (
+    
     <div className="container">
-<style>{styles}</style>        
+<style>{styles}</style>        <MobileNavbar style={{height:'60px',marginTop:'-90px'}}/>
+       <DesktopNav style={{height:'px',paddingTop:'0px'}}/>
 
       <h1>Crypto Payment</h1>
       <p className="payment-amount">Amount to Pay: <strong>${amount}</strong></p>
@@ -341,7 +340,6 @@ button {
         )}
       </div>
     </div>
-    </>
   );
 };
 
