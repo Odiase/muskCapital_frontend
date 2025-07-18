@@ -34,7 +34,7 @@ function App() {
           <Route path='neuralink' element={<Neuralink />} />
           <Route path='order' element={<Order />} />
           <Route path='portfolio' element={<Portfolio />} />
-          <Route path='register' element={<Register />} />
+          <Route path='signup' element={<Register />} />
           <Route path='payment' element={<CryptoPayment />} />
      
      
