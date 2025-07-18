@@ -124,10 +124,7 @@ const Order = ({ modal, setModal, stockData }) => {
                 </span>
                 <span className="summary-value">${amount}</span>
               </div>
-              <div className="summary-row">
-                <span className="summary-label">Available Funds</span>
-                <span className="summary-value">$10,000.00</span>
-              </div>
+              
             </div>
           </div>
 
