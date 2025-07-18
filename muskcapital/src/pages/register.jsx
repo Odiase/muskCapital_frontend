@@ -16,14 +16,14 @@ const styles = `
   }
 
   .register-content {
-    width: 70vw;
+    width: 92vw;
     height: 780px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 10px;
   }
 
   @media (min-width: 1024px) {
@@ -34,7 +34,7 @@ const styles = `
 
   .register-image-section {
     display: none;
-    width: 94%;
+    width: 50%;
     border-radius: 0.75rem;
     overflow: hidden;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
