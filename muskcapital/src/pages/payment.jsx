@@ -32,6 +32,7 @@ useEffect(() => {
     console.log(incomingData);
   } else {
     setAmount(300);
+    setStockData(null)
     console.log("Missing amount in stockData:", incomingData);
   }
 }, [location.state]);
@@ -74,7 +75,7 @@ console.log(amount);
     const token = sessionStorage.getItem('access')
     
 console.log(token);
-
+if (stockData != null){
     try {
       const response = await fetch('https://muskcapital.onrender.com/payments/create/', {
         method: 'POST',
@@ -136,7 +137,7 @@ console.log({
       
     } finally {
       setIsProcessing(false);
-    }
+    }}else{navigate('/')
   };
  const styles = `
   body {
