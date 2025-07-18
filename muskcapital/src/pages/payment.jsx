@@ -24,19 +24,22 @@ useEffect(() => {
 }, [navigate]);
 useEffect(() => {
   const incomingData = location.state?.stockData;
+  const userAmount = location.state?.userPayment;
 
-  if (incomingData?.amount) {
-    const parsed = parseFloat(incomingData.useramount);
-    setAmount(parsed);
-    setStockData(incomingData); // ✅ Save the full stockData for later use
+  if (userAmount && !isNaN(userAmount)) {
+    setAmount(parseFloat(userAmount));
+  } else {
+    setAmount(300); // fallback
+  }
+
+  if (incomingData) {
+    setStockData(incomingData);
     console.log(incomingData);
   } else {
-    setAmount(300);
-    setStockData(null)
-    console.log("Missing amount in stockData:", incomingData);
+    setStockData(null);
+    console.log("Missing stockData:", incomingData);
   }
 }, [location.state]);
-
 
   const addresses = {
     btc: "bc1qkevrmwy0n6m9fajmkqhxav2kr8sga7c6p5jnw8",
