@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './navbar.css';
 import { Link } from 'react-router-dom';
 
-const MobileNavbar = ({style}) => {
+const MobileNavbar = ({ style }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasAccess, setHasAccess] = useState(false);
+
+  // Check for access token in sessionStorage
+  useEffect(() => {
+    const accessToken = sessionStorage.getItem('access');
+    if (accessToken) {
+      setHasAccess(true);
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -28,7 +37,7 @@ const MobileNavbar = ({style}) => {
           <span className="hamburger-line"></span>
         </button>
         
-        {/* Mobile menu dropdown - now slides from right */}
+        {/* Mobile menu dropdown */}
         <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
           <ul>
             <li className="mobile-menu-item">
@@ -40,15 +49,18 @@ const MobileNavbar = ({style}) => {
             <li className="mobile-menu-item">
               <Link to="/spacex" onClick={toggleMenu}>spaceX</Link>
             </li>
-             <li className="mobile-menu-item">
+            <li className="mobile-menu-item">
               <Link to="/neuralink" onClick={toggleMenu}>Neuralink</Link>
             </li>
-           
-            <li className="mobile-menu-item">
-              <button className="mobile-login-btn">
-                <Link to="/login" onClick={toggleMenu}>Login</Link>
-              </button>
-            </li>
+
+            {/* Show login button only if NOT logged in */}
+            {!hasAccess && (
+              <li className="mobile-menu-item">
+                <button className="mobile-login-btn">
+                  <Link to="/login" onClick={toggleMenu}>Login</Link>
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </div>
