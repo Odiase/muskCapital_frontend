@@ -17,6 +17,7 @@ const Details = () => {
   useEffect(() => {
     if (location?.state) {
       setStockData(location.state);
+      console.log(stockData)
     }
   }, [location]);
 
