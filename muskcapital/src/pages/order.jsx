@@ -94,7 +94,7 @@ const [returnamount,setReturnamount] = useState(0);
             <label className="form-label">
               {stockData?.shares !== undefined ? 'Estimated Cost' : 'Expected Return'}
             </label>
-            <input type="number" className="form-input" value={returnamount} readOnly />
+            <input type="number" className="form-input" value={amount} readOnly />
           </div>
 
           <div className="order-summary">
