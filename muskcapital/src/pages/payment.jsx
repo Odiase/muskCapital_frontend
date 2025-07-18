@@ -150,7 +150,7 @@ console.log({
 
 .container {
   max-width: 500px;
-  margin: 80px auto;
+  margin: 80px auto 0px auto;
   padding: 30px;
 margin-top:140px;
   background-color: #1c1f26;
@@ -282,10 +282,10 @@ button {
 /* Rest of your existing styles... */
   `
   return (
-    
-    <div className="container">
-<style>{styles}</style>        <MobileNavbar style={{height:'60px',marginTop:'-90px'}}/>
+    <MobileNavbar style={{height:'60px',marginTop:'-90px'}}/>
        <DesktopNav style={{height:'px',paddingTop:'0px'}}/>
+    <div className="container">
+<style>{styles}</style>        
 
       <h1>Crypto Payment</h1>
       <p className="payment-amount">Amount to Pay: <strong>${amount}</strong></p>
