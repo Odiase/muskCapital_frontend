@@ -16,7 +16,7 @@ const styles = `
   }
 
   .login-content {
-    width: 70vw;
+    width: 84vw;
     height: 800px;
     margin: 0 auto;
     display: flex;
