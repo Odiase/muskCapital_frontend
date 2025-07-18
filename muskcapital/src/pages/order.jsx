@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Order = ({ modal, setModal, stockData }) => {
   const [inputValue, setInputValue] = useState('');
   const [amount, setAmount] = useState(0);
-
+const [return,setReturn] = useState(0);
 
 
 
@@ -15,16 +15,19 @@ const Order = ({ modal, setModal, stockData }) => {
 
   if (stockData?.shares !== undefined) {
     setAmount(Math.ceil(price * stockData.shares));
+    setReturn(amount)
   } else {
     const isNeuralink = (stockData?.name || '').toLowerCase().includes('neuralink');
 
     if (isNeuralink) {
-      setAmount(userAmount + Math.ceil(userAmount * 0.41));
+      setReturn(userAmount + Math.ceil(userAmount * 0.41));
+      setAmount(userAmount)
     } else {
       const match = stockData?.return?.match(/\d+/);
       const returnRate = match ? parseFloat(match[0]) : 0;
       const expected = userAmount + (userAmount * (returnRate / 100));
-      setAmount(Math.ceil(expected));
+      setAmount(userAmount)
+      setReturn(Math.ceil(expected));
     }
   }
 }, [inputValue, stockData]);
@@ -91,7 +94,7 @@ const Order = ({ modal, setModal, stockData }) => {
             <label className="form-label">
               {stockData?.shares !== undefined ? 'Estimated Cost' : 'Expected Return'}
             </label>
-            <input type="number" className="form-input" value={amount} readOnly />
+            <input type="number" className="form-input" value={return} readOnly />
           </div>
 
           <div className="order-summary">
@@ -124,14 +127,11 @@ const Order = ({ modal, setModal, stockData }) => {
                 </span>
                 <span className="summary-value">${amount}</span>
               </div>
-              <div className="summary-row">
-                <span className="summary-label">Available Funds</span>
-                <span className="summary-value">$10,000.00</span>
-              </div>
+             
             </div>
           </div>
 
-          <button className="submit-button" onClick={payment}>Review Order</button>
+          <button className="submit-button" onClick={payment}>Pay</button>
         </div>
       </div>
     </div>
