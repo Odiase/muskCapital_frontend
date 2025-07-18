@@ -7,8 +7,9 @@ const Order = ({ modal, setModal, stockData }) => {
   const [amount, setAmount] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
-
-  const maxRange = location?.state?.range || Infinity; // fallback if range is undefined
+  
+const maxRange = stockData?.range || Infinity;
+ // fallback if range is undefined
 
   useEffect(() => {
     const price = stockData?.price || 0;
