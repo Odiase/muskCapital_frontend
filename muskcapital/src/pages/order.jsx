@@ -15,7 +15,7 @@ const [returnamount,setReturnamount] = useState(0);
 
   if (stockData?.shares !== undefined) {
     setAmount(Math.ceil(price * stockData.shares));
-    setReturnamount(amount)
+    setReturnamount(Math.ceil(price * stockData.shares))
   } else {
     const isNeuralink = (stockData?.name || '').toLowerCase().includes('neuralink');
 
