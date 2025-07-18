@@ -114,7 +114,7 @@ console.log({
       body: JSON.stringify({
         stock_name: stockData.stock_name,
         stock_symbol: stockData.stock_symbol,
-        quantity: 1,
+        quantity: stockData.quantity || 1,
         purchase_price: stockData.price.toString(), // optional
         purchase_date
       }),
