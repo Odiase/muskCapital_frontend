@@ -1,0 +1,154 @@
+/* Modal Overlay - unchanged */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Smaller Modal Container */
+.modal-container {
+  width: 90%;
+  max-width: 24rem; /* Reduced from 28rem */
+  background-color: white;
+  border-radius: 0.375rem; /* Slightly smaller radius */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+  overflow: hidden;
+}
+
+/* Compact Modal Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1f2937;
+  padding: 0.75rem 1rem; /* Reduced padding */
+}
+
+.close-button {
+  color: #d1d5db;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.close-button:hover {
+  color: white;
+}
+
+.close-button svg {
+  width: 1.25rem; /* Smaller close icon */
+  height: 1.25rem;
+}
+
+.modal-title {
+  color: white;
+  font-size: 1rem; /* Smaller title */
+  font-weight: 600; /* Slightly less bold */
+  text-align: center;
+  flex: 1;
+}
+
+.header-spacer {
+  width: 1.25rem; /* Smaller spacer */
+}
+
+/* More Compact Modal Content */
+.modal-content {
+  padding: 1rem; /* Reduced padding */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Reduced gap */
+}
+
+/* Form Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem; /* Tighter gap */
+}
+
+.form-label {
+  font-size: 0.8125rem; /* Slightly smaller */
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem; /* More compact input */
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem; /* Smaller radius */
+  font-size: 0.875rem; /* Smaller font */
+  color: #111827;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Compact Order Summary */
+.order-summary {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 0.75rem; /* Reduced padding */
+}
+
+.summary-title {
+  font-size: 1rem; /* Smaller title */
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem; /* Reduced margin */
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Tighter gap */
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-label {
+  font-size: 0.8125rem; /* Smaller text */
+  color: #4b5563;
+}
+
+.summary-value {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  padding: 0.625rem; /* More compact button */
+  background-color: #1f2937;
+  color: white;
+  font-size: 0.875rem; /* Smaller font */
+  font-weight: 500;
+  border: none;
+  border-radius: 0.375rem; /* Smaller radius */
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #111827;
+}
+
+.submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}

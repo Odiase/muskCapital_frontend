@@ -1,0 +1,65 @@
+@container (max-width: 120px) {
+  .table-93bff382-d332-49d9-bc77-eddabcb219fb-column-120 {
+    display: none;
+  }
+}
+@container (max-width: 240px) {
+  .table-93bff382-d332-49d9-bc77-eddabcb219fb-column-240 {
+    display: none;
+  }
+}
+@container (max-width: 360px) {
+  .table-93bff382-d332-49d9-bc77-eddabcb219fb-column-360 {
+    display: none;
+  }
+}
+@container (max-width: 480px) {
+  .table-93bff382-d332-49d9-bc77-eddabcb219fb-column-480 {
+    display: none;
+  }
+}
+@container (max-width: 600px) {
+  .table-93bff382-d332-49d9-bc77-eddabcb219fb-column-600 {
+    display: none;
+  }
+}
+@container (max-width: 720px) {
+  .table-93bff382-d332-49d9-bc77-eddabcb219fb-column-720 {
+    display: none;
+  }
+}
+@container (max-width: 840px) {
+  .table-93bff382-d332-49d9-bc77-eddabcb219fb-column-840 {
+    display: none;
+  }
+}
+@container (max-width: 960px) {
+  .table-93bff382-d332-49d9-bc77-eddabcb219fb-column-960 {
+    display: none;
+  }
+}
+
+/* portfolio.css */
+.pc-content {
+  display: flex;
+    overflow-x: scroll;
+
+}
+
+.pc-content::-webkit-scrollbar {
+  display: none;
+}
+.mobile-content {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .pc-content {
+    display: flex;
+    overflow-x: scroll;
+  }
+  
+  .mobile-content {
+    display: none;
+  }
+}

@@ -1,0 +1,467 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-family: "Lato", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: rgb(10, 10, 10);
+  background: black;
+}
+
+nav {
+  background-color: transparent;
+  padding: 25px 15px;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  right: 0;
+  left: 0;
+}
+nav .navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav #logo a {
+  color: white;
+  font-size: 2rem;
+}
+nav li {
+  list-style: none;
+  display: inline-block;
+}
+nav li a {
+  color: white;
+  font-weight: bold;
+  margin-right: 25px;
+}
+nav button {
+  background-color: black;
+  border: none;
+  margin-left: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90px;
+}
+nav button a {
+  color: white;
+  font-weight: bold;
+}
+
+.hero-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -1;
+}
+
+.hero-overlay {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* dark overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  max-width: 900px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.hero-overlay p {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  max-width: 700px;
+}
+
+.hero-overlay .cta-btn {
+  margin-top: 30px;
+  padding: 12px 28px;
+  background-color: #00baff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero-overlay .cta-btn:hover {
+  background-color: #0099dd;
+}
+
+@media (max-width: 768px) {
+  .hero-overlay h1 {
+    font-size: 2.2rem;
+  }
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+}
+.neuralink-section {
+  background: #000;
+  color: #fff;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px;
+}
+
+.neuralink-content {
+  display: flex;
+  gap: 60px;
+  max-width: 1200px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.left h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.underscore {
+  color: #00baff;
+}
+
+.right {
+  flex: 1;
+  min-width: 300px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .neuralink-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .left h1 {
+    font-size: 2.2rem;
+  }
+  .right {
+    font-size: 1rem;
+  }
+}
+.neuralink-banner {
+  display: block;
+  width: 80%;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px 30px;
+  background: linear-gradient(90deg, #00baff, #6a00ff);
+  color: #fff;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+}
+
+.neuralink-banner:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .neuralink-banner {
+    font-size: 1rem;
+    padding: 16px 20px;
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+  /* start hidden */
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.prime-study-section {
+  background-color: #000;
+  color: #fff;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.prime-content {
+  max-width: 900px;
+  width: 100%;
+}
+
+.prime-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.prime-content p {
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.prime-content .highlight {
+  color: #00baff;
+  font-weight: 600;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .prime-content h2 {
+    font-size: 1.8rem;
+  }
+  .prime-content p {
+    font-size: 1rem;
+  }
+}
+.tiers-section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tiers-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.tiers-section p {
+  color: #aaa;
+  margin-bottom: 50px;
+}
+
+.cards-container {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
+}
+
+.card h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.card .tier-range {
+  font-size: 0.9rem;
+  color: #4fc3f7;
+  margin-bottom: 15px;
+}
+
+.card ul {
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.card ul li {
+  margin-bottom: 10px;
+}
+
+.card button {
+  padding: 10px 20px;
+  background: #4fc3f7;
+  border: none;
+  border-radius: 25px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.card button:hover {
+  background: #29b6f6;
+}
+
+.founder {
+  background: linear-gradient(to right, #5e35b1, #7e57c2);
+  border: 2px solid #ab47bc;
+}
+
+.founder .tier-range {
+  color: #ffeb3b;
+}
+
+.neuralink-footer {
+  background-color: #000;
+  color: #ccc;
+  padding: 40px 20px;
+  font-family: sans-serif;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-left h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.footer-left p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.footer-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-right a {
+  color: #00baff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+  color: #6a00ff;
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-right {
+    justify-content: center;
+  }
+}/*# sourceMappingURL=neuralink.css.map */
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: block;
+  }
+  
+  /* Hide mobile nav on desktop */
+  .mobile-nav {
+    display: none;
+  }
+}
+
+/* Existing nav styles - make sure they only apply to desktop nav */
+.desktop-nav .navdiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.desktop-nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.desktop-nav button {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Rest of your existing styles... */

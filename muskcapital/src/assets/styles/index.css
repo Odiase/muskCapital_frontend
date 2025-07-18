@@ -1,0 +1,344 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav {
+  background-color: transparent;
+  padding: 25px 15px;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  right: 0;
+  left: 0;
+}
+nav .navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav #logo a {
+  color: white;
+  font-size: 2rem;
+}
+nav li {
+  list-style: none;
+  display: inline-block;
+}
+nav li a {
+  color: white;
+  font-weight: bold;
+  margin-right: 25px;
+}
+nav button {
+  background-color: black;
+  border: none;
+  margin-left: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90px;
+}
+nav button a {
+  color: white;
+  font-weight: bold;
+}
+
+.hero {
+  background: url("../elon_background.jpg") no-repeat center center/cover;
+  height: 100vh;
+  position: relative;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+.ventures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background: #111;
+}
+
+.venture-card {
+  background: #1c1c1c;
+  padding: 2rem;
+  border-radius: 12px;
+  flex: 1 1 280px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.venture-card:hover {
+  transform: scale(1.03);
+}
+
+.btn {
+  display: inline-block;
+  background: #e50914;
+  color: #fff;
+  padding: 0.8rem 1.4rem;
+  border-radius: 25px;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #b5060f;
+}
+
+.benefits {
+  background: #0d0d0d;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.benefits h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.benefit-card {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+}
+
+.donate {
+  background: linear-gradient(to right, #ff3c00, #e50914);
+  color: #000;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.donate h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.donate-btn {
+  background: #000;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.donate-btn:hover {
+  background: #222;
+}
+
+footer {
+  background: #000;
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid #333;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.vision-section {
+  background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.vision-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.vision-content p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.vision-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.vision-icons div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vision-icons img {
+  width: 60px;
+  height: auto;
+}
+
+.vision-icons span {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.vision-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #e50914;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.vision-btn:hover {
+  background-color: #b5060f;
+}
+
+.testimonials-section {
+  background-color: #0a0a0a;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.testimonials-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: #1e1e1e;
+  padding: 25px 20px;
+  border-radius: 8px;
+  border-left: 4px solid #e50914;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.author {
+  font-weight: bold;
+  color: #bbb;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+  /* start hidden */
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}/*# sourceMappingURL=index.css.map */
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: block;
+  }
+  
+  /* Hide mobile nav on desktop */
+  .mobile-nav {
+    display: none;
+  }
+}
+
+/* Existing nav styles - make sure they only apply to desktop nav */
+.desktop-nav .navdiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.desktop-nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.desktop-nav button {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Rest of your existing styles... */
