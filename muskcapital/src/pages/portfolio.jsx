@@ -34,6 +34,17 @@ const Portfolio = () => {
         const data = await response.json();
         setPortfolioData(data);
         console.log(data);
+          let total = 0;
+data?.stocks?.forEach(stock => {
+  const quantity = Number(stock.quantity);
+  const purchasePrice = parseFloat(stock.purchase_price);
+  const isTesla = stock.stock_name.toLowerCase() === 'tesla';
+  const currentPrice = purchasePrice * 1.1;
+
+  total += isTesla ? purchasePrice : quantity * currentPrice;
+});
+setTotalValue(total);
+
         
       } catch (err) {
         if (err) {
@@ -47,16 +58,7 @@ const Portfolio = () => {
 
     fetchPortfolio();
   }, [navigate]);
-    let total = 0;
-data?.stocks?.forEach(stock => {
-  const quantity = Number(stock.quantity);
-  const purchasePrice = parseFloat(stock.purchase_price);
-  const isTesla = stock.stock_name.toLowerCase() === 'tesla';
-  const currentPrice = purchasePrice * 1.1; // Simulated current value
-
-  total += isTesla ? purchasePrice : quantity * currentPrice;
-});
-setTotalValue(total);
+  
 
   return (
     <div className="layout-container flex h-full grow flex-col">
