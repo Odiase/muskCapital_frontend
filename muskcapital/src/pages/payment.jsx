@@ -142,7 +142,7 @@ console.log({
   return (
     
     <div className="container">
-<style>{styles}</style>        <MobileNavbar style={{height:'60px',marginTop:'-90px'}}/>
+      <MobileNavbar style={{height:'60px',marginTop:'-90px'}}/>
        <DesktopNav style={{height:'px',paddingTop:'0px'}}/>
 
       <h1>Crypto Payment</h1>
