@@ -26,7 +26,7 @@ useEffect(() => {
   const incomingData = location.state?.stockData;
 
   if (incomingData?.amount) {
-    const parsed = parseFloat(incomingData.amount);
+    const parsed = parseFloat(incomingData.useramount);
     setAmount(parsed);
     setStockData(incomingData); // ✅ Save the full stockData for later use
     console.log(incomingData);
