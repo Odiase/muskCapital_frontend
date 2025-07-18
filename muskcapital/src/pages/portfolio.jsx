@@ -91,20 +91,7 @@ setTotalValue(total);
          
         {/* Main Content */}
         <div className="layout-content-container flex flex-col max-w-[1000px] flex-1">
-    <div className="mobile-content">
-        <section>
-            <div className="flex flex-wrap gap-2 px-4 py-1">
-              <div className="flex min-w-72 flex-1 flex-col gap-2">
-                <p className="text-white text-base font-medium leading-normal">Portfolio Value</p>
-                <p className="text-white tracking-light text-[32px] font-bold leading-tight truncate">$12,345.67</p>
-                <div className="flex gap-1">
-                  <p className="text-[#a5b6a0] text-base font-normal leading-normal">1Y</p>
-                  <p className="text-[#0bda35] text-base font-medium leading-normal">+12.34%</p>
-                </div>
-                               
-              </div>
-            </div>
-          </section>
+   
         
   
      
