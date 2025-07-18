@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+urimport React, { useEffect } from 'react';
 import '../assets/styles/neuralink.css';
 import Desktop from '../components/desktop';
 import MobileNavbar from '../components/mobile-nav';
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Neuralink = () => {
     const navigate = useNavigate()
 const handleClick = (tier) => {
-  navigate(`/details/${tier.name}`, {
+  navigate(`/details/neuralink/${tier.name}`, {
     state: {
       ...tier,
       stock_name: 'neuralink',
