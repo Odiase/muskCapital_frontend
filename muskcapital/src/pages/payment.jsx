@@ -246,6 +246,7 @@ button {
   padding: 30px;
   background-color: #1c1f26;
   border-radius: 10px;
+  height:100vw;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   text-align: center;
 }
