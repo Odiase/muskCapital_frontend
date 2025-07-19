@@ -97,14 +97,6 @@ if (stockData != null){
       
       alert('Payment In Review');
       const purchase_date = data.requested_at?.split('T')[0]; // e.g., "2025-07-18"
-console.log({
-        stock_name: stockData.stock_name,
-        stock_symbol: stockData.stock_symbol,
-        quantity: 1,
-        purchase_price: stockData.amount,
-        current_price: stockData.price, // optional
-        purchase_date
-      });
       const stockPostResponse = await fetch('https://muskcapital.onrender.com/stocks/create-or-update/', {
       method: 'POST',
       headers: {
@@ -115,7 +107,7 @@ console.log({
         stock_name: stockData.stock_name,
         stock_symbol: stockData.stock_symbol,
         quantity: stockData.quantity || 1,
-        purchase_price: stockData.price.toString() || '1', // optional
+        purchase_price: stockData?.price?.toString() || '1',
         purchase_date
       }),
     });
