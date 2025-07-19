@@ -183,10 +183,10 @@ const styles = `
     width: 100%;
     background-color: #3b82f6;
     color: white;
-    padding: 0.3rem 0.6rem;
+    padding: 0.6rem 0.9rem;
     border: none;
     border-radius: 0.5rem;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s;
