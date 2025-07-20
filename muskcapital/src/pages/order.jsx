@@ -172,14 +172,26 @@ const handleInputChange = (e) => {
             </div>
           </div>
 
-          <button
+         <button
   className="submit-button"
   onClick={payment}
-  disabled={!!rangeError || !inputValue}
-  style={{ opacity: !!rangeError || !inputValue ? 0.6 : 1, cursor: !!rangeError || !inputValue ? 'not-allowed' : 'pointer' }}
+  disabled={
+    (stockData?.shares === undefined && (!inputValue || !!rangeError))
+  }
+  style={{
+    opacity:
+      stockData?.shares === undefined && (!inputValue || !!rangeError)
+        ? 0.6
+        : 1,
+    cursor:
+      stockData?.shares === undefined && (!inputValue || !!rangeError)
+        ? 'not-allowed'
+        : 'pointer',
+  }}
 >
   Pay
 </button>
+
 
         </div>
       </div>
