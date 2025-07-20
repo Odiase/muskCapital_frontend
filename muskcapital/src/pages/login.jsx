@@ -44,9 +44,10 @@ const styles = `
   @media (min-width: 1024px) {
     .login-image-section {
       display: block;
+      width: 50%;
     }
     .login-image {
-    width: 70%;
+    width: 100%;
     height: 480px;
     object-fit: cover;
   }
