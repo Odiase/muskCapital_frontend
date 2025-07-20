@@ -45,11 +45,11 @@ const styles = `
   @media (min-width: 1024px) {
     .login-image-section {
       display: block;
-      width: 50%;
+      width: 45%;
     }
     .login-image {
     width: 100%;
-    height: 480px;
+    height: 471px;
     object-fit: cover;
   }
   }
