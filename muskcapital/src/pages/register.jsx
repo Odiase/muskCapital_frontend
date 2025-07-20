@@ -4,7 +4,7 @@ import DesktopNav from '../components/desktop';
 import MobileNavbar from '../components/mobile-nav';
 import image2 from '../assets/starship_spacex.webp';
 import '../assets/styles/tesla.css';
-import { Link } from 'react-router-dom';
+
 
 // Add this CSS to your stylesheet or create a new CSS file
 const styles = `
@@ -352,6 +352,7 @@ const Register = () => {
         <div className="navdiv">
           <div id="logo">
             <a href="#" style={{fontFamily:'arial',fontWeight:'bold'}}>MuskCapital</a>
+
           </div>
           <ul>
             <li>
@@ -360,9 +361,10 @@ const Register = () => {
              <li>
               <Link to="/spacex">SpaceX</Link>
             </li>
-            <li>
-              Link to="/neuralink">Neuralink</Link>
-            </li>
+           <li>
+  <Link to="/neuralink">Neuralink</Link>
+</li>
+
             <button>
               <Link to="/signup">Signup</Link>
             </button>
