@@ -1,20 +1,50 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import '../assets/styles/tesla.css';
 import MobileNavbar from '../components/mobile-nav'; 
 import Desktop from '../components/desktop'; 
 import teslalogo from '../assets/tesla-logo-png-2244.png'
 import { useNavigate } from 'react-router-dom';
 const Tesla = () => {
-    const tiers = [
-  { tier: 'Tier 1 – Entry', shares: 100, amount: '$31,565', return: '$15K–$20K',price:315.65 },
-  { tier: 'Tier 2 – Growth', shares: 250, amount: '$78,912.50', return: '$37K–$50K',price:315.65},
-  { tier: 'Tier 3 – Strategic', shares: 500, amount: '$157,825', return: '$74K–$100K',price:315.65 },
-  { tier: 'Tier 4 – Visionary', shares: 750, amount: '$236,737.50', return: '$112K–$150K',price:315.65 },
-  { tier: 'Tier 5 – Institutional', shares: 1000, amount: '$315,650', return: '$150K–$200K',price:315.65 },
-  { tier: 'Tier 6 – Anchor', shares: 2000, amount: '$631,300', return: '$300K–$400K' ,price:315.65}, 
-  { tier: 'Tier 7 – Foundational', shares: 3000, amount: '$946,950', return: '$450K–$600K',price:315.65},
-  { tier: 'Tier 8 – Flagship', shares: '3200', amount: '$1,010,080', return: '$500K–$670K+',price:315.65},
-];
+    const [price, setPrice] = useState(0)
+ const [tiers, setTiers] = useState([]);
+
+  useEffect(() => {
+    const fetchPrice = async () => {
+      try {
+        const response = await fetch('https://muskcapital.onrender.com/tsla_price/');
+        const data = await response.json();
+        setPrice(data.current_price);
+      } catch (error) {
+        console.log('Error fetching price:', error);
+      }
+    };
+
+    fetchPrice();
+  }, []);
+
+  useEffect(() => {
+    if (price !== null) {
+      const updatedTiers = [
+        { tier: 'Tier 1 – Entry', shares: 100, return: '$15K–$20K' },
+        { tier: 'Tier 2 – Growth', shares: 250, return: '$37K–$50K' },
+        { tier: 'Tier 3 – Strategic', shares: 500, return: '$74K–$100K' },
+        { tier: 'Tier 4 – Visionary', shares: 750, return: '$112K–$150K' },
+        { tier: 'Tier 5 – Institutional', shares: 1000, return: '$150K–$200K' },
+        { tier: 'Tier 6 – Anchor', shares: 2000, return: '$300K–$400K' },
+        { tier: 'Tier 7 – Foundational', shares: 3000, return: '$450K–$600K' },
+        { tier: 'Tier 8 – Flagship', shares: 3200, return: '$500K–$670K+' },
+      ].map((tier) => ({
+        ...tier,
+        price,
+        amount: (tier.shares * price).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+      }));
+
+      setTiers(updatedTiers);
+      console.log(updatedTiers);
+      
+    }
+  }, [price]);
+
   const navigate = useNavigate();
 
  const handleRowClick = (item) => {
@@ -164,7 +194,7 @@ const Tesla = () => {
       <h2>
         Investment Tiers{' '}
         <span style={{ fontSize: '0.6em', color: '#ccc' }}>
-          (as of July 2025 – $315.65/share)
+          {`(Realtime stock price $${price}/share)`}
         </span>
       </h2>
 

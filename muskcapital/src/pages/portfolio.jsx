@@ -178,7 +178,7 @@ title: `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
                 <table className="flex-1">
                   <thead>
                     <tr className="bg-[#1f251d]">
-                      {['Symbol', 'Name', 'Quantity', 'Avg. Cost', 'Last Price', 'Change', 'Value'].map((header) => (
+                      {['Symbol', 'Name', 'Quantity', 'price bought', 'status', 'Change', 'Value'].map((header) => (
                         <th key={header} className="px-4 py-3 text-left text-white w-[400px] text-sm font-medium leading-normal">
                           {header}
                         </th>
@@ -188,9 +188,9 @@ title: `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
                   <tbody>
   {portfolioData?.stocks?.map((stock, index) => {
     const quantity = Number(stock.quantity);
-    const purchasePrice = parseFloat(stock.purchase_price);
-    const currentPrice = purchasePrice * 1.1; // Simulated +10%
-    const change = ((currentPrice - purchasePrice) / purchasePrice) * 100;
+    const purchasePrice = parseFloat(quantity*stock.current_price);
+    const currentPrice = stock.current_price; 
+    const change = stock.change_percent
 
     // Tesla-specific logic: use raw purchasePrice for value
     const value = stock.stock_name.toLowerCase() === 'tesla'
@@ -209,16 +209,23 @@ title: `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
           {quantity}
         </td>
         <td className="h-[72px] px-4 py-2 w-[400px] text-[#a5b6a0] text-sm font-normal leading-normal">
-          ${purchasePrice.toFixed(2)}
+          <p>${stock.purchase_price}</p>
+
         </td>
         <td className="h-[72px] px-4 py-2 w-[400px] text-[#a5b6a0] text-sm font-normal leading-normal">
-          ${currentPrice.toFixed(2)}
+          {stock.status.split('/')[0]}
         </td>
         <td className="h-[72px] px-4 py-2 w-[400px] text-[#a5b6a0] text-sm font-normal leading-normal">
-          {change >= 0 ? '+' : '-'}{Math.abs(change).toFixed(2)}%
+         {stock.change_percent !== null
+  ? `${change >= 0 ? '+' : '-'}${Math.abs(change).toFixed(2)}%`
+  : 'undisclosed'}
+
         </td>
         <td className="h-[72px] px-4 py-2 w-[400px] text-[#a5b6a0] text-sm font-normal leading-normal">
-          ${value.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+          ${stock.current_price ? (quantity*stock.current_price).toLocaleString(undefined, { minimumFractionDigits: 1,maximumFractionDigits: 1}): purchasePrice.toLocaleString(undefined, {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1
+})}
         </td>
       </tr>
     );
@@ -232,10 +239,6 @@ title: `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
         </div>
       </div>
 
-      {/* Mobile Content */}
-  
-      {/* Mobile Footer Navigation */}
-     
     </div>
   );
 };

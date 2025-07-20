@@ -68,7 +68,8 @@ const Details = () => {
             <div className="price-section">
               <h2>Stock Price</h2>
               <div className="price-display">
-                <p className="current-price">315.65</p>
+                <p className="current-price">
+                {stockData?.price || 'Private'}</p>
                 <div className="price-change">
                   <span className="time-frame">1Y</span>
                   <span className="change-positive">+15%</span>

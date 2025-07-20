@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../assets/styles/spacex.css';
 import SpaceXLogo from '../assets/SpaceX-Logo.svg';
 import Falcon9Image from '../assets/f9.jpg';
@@ -26,7 +26,7 @@ const tiers = [
     return: '20% fixed',
     profit: '$10,000 – $19,999',
     bonus: 'Early aerospace tech insights',
-    price:316.65
+    
   },
      {
     name: 'Falcon Tier',
@@ -35,7 +35,7 @@ const tiers = [
     profit: '$30,000 – $74,999',
     bonus: 'Private events & updates',
     className: 'falcon',
-    price:316.65},
+    },
   {
     name: 'Dragon Tier',
     range: '($250,000 – $499,999)',
@@ -43,7 +43,7 @@ const tiers = [
     profit: '$87,500 – $174,999',
     bonus: 'Priority project involvement',
     className: 'dragon',
-    price:316.65},
+    },
   {
     name: 'Starship Tier',
     range: '($500,000+)',
@@ -51,7 +51,7 @@ const tiers = [
     profit: '$200,000+',
     bonus: 'VIP tours, exec briefings, priority ventures',
     className: 'starship',
-    price:316.65},
+    },
 ];
 
 
