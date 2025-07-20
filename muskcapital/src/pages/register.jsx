@@ -4,6 +4,7 @@ import DesktopNav from '../components/desktop';
 import MobileNavbar from '../components/mobile-nav';
 import image2 from '../assets/starship_spacex.webp';
 import '../assets/styles/tesla.css';
+import { Link } from 'react-router-dom';
 
 // Add this CSS to your stylesheet or create a new CSS file
 const styles = `
@@ -354,13 +355,16 @@ const Register = () => {
           </div>
           <ul>
             <li>
-              <a href="">Home</a>
+              <Link to="/tesla">Tesla</Link>
+            </li>
+             <li>
+              <Link to="/spacex">SpaceX</Link>
             </li>
             <li>
-              <a href="">Portfolio</a>
+              Link to="/neuralink">Neuralink</Link>
             </li>
             <button>
-              <a href="">Login</a>
+              <Link to="/signup">Signup</Link>
             </button>
           </ul>
         </div>
