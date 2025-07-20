@@ -45,10 +45,15 @@ const styles = `
     .login-image-section {
       display: block;
     }
+    .login-image {
+    width: 70%;
+    height: 480px;
+    object-fit: cover;
+  }
   }
 
   .login-image {
-    width: 100%;
+    width: 80%;
     height: 480px;
     object-fit: cover;
   }
