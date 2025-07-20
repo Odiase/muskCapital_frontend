@@ -222,10 +222,7 @@ title: `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
 
         </td>
         <td className="h-[72px] px-4 py-2 w-[400px] text-[#a5b6a0] text-sm font-normal leading-normal">
-          ${stock.current_price ? (quantity*stock.current_price).toLocaleString(undefined, { minimumFractionDigits: 1,maximumFractionDigits: 1}): purchasePrice.toLocaleString(undefined, {
-  minimumFractionDigits: 1,
-  maximumFractionDigits: 1
-})}
+          ${stock.current_price ? (quantity*stock.current_price).toLocaleString(undefined, { minimumFractionDigits: 1,maximumFractionDigits: 1}): `${stock.purchase_price}`}
         </td>
       </tr>
     );
