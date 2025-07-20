@@ -314,7 +314,7 @@ setIsLoggingIn(true);
               <Link to="/spacex">SpaceX</Link>
             </li>
             <li>
-              Link to="/neurallink">Neuralink</Link>
+              Link to="/neuralink">Neuralink</Link>
             </li>
             <button>
               <Link to="/signup">Signup</Link>
