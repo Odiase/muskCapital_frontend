@@ -4,7 +4,7 @@ import DesktopNav from '../components/desktop';
 import MobileNavbar from '../components/mobile-nav';
 import image2 from '../assets/starship_spacex.webp';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 
 // Add this CSS to your stylesheet or create a new CSS file
 const styles = `
@@ -314,11 +314,11 @@ setIsLoggingIn(true);
               <Link to="/spacex">SpaceX</Link>
             </li>
             <li>
-              Link to="/neuralink">Neuralink</Link>
+              <Link to="/neuralink">Neuralink</Link>
             </li>
-            <button>
-              <Link to="/signup">Signup</Link>
-            </button>
+           
+              <li><Link to="/signup">Signup</Link></li>
+            
           </ul>
         </div>
       </nav>
