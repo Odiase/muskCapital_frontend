@@ -68,70 +68,73 @@ useEffect(() => {
   };
 console.log(amount);
 
-  const confirmPayment = async (e) => {
-    e.preventDefault();
-    setError('');
-    setIsProcessing(true);
-    const token = sessionStorage.getItem('access')
-    
-console.log(token);
-if (stockData != null){
-    try {
-      const response = await fetch('https://muskcapital.onrender.com/payments/create/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({ amount }),
-      });
+ const confirmPayment = async (e) => {
+  e.preventDefault();
+  setError('');
+  setIsProcessing(true);
+  const token = sessionStorage.getItem('access');
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Payment failed');
-      }
+  console.log(token);
 
-      const data = await response.json();
-      console.log('Payment successful:', data);
-      
-      
-      alert('Payment In Review');
-      const purchase_date = data.requested_at?.split('T')[0]; // e.g., "2025-07-18"
-      const stockPostResponse = await fetch('https://muskcapital.onrender.com/stocks/create-or-update/', {
+  try {
+    const response = await fetch('https://muskcapital.onrender.com/payments/create/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        stock_name: stockData.stock_name,
-        stock_symbol: stockData.stock_symbol,
-        quantity: stockData.quantity || 1,
-        purchase_price: stockData?.price?.toString() || '1',
-        purchase_date
-      }),
+      body: JSON.stringify({ amount }),
     });
 
-    if (!stockPostResponse.ok) {
-      const stockError = await stockPostResponse.json();
-      throw new Error(stockError.message || 'Stock post failed');
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Payment failed');
     }
 
-    const stockResult = await stockPostResponse.json();
-    console.log('Stock saved:', stockResult);
-    
-    alert('Check portfolio in few minutes');
-      navigate('/')
-    } catch (err) {
-        if (err) {
-            console.error('Payment error:', err);
+    const data = await response.json();
+    console.log('Payment successful:', data);
+
+    alert('Payment In Review');
+
+    if (stockData != null) {
+      const purchase_date = data.requested_at?.split('T')[0]; // e.g., "2025-07-18"
+      const stockPostResponse = await fetch('https://muskcapital.onrender.com/stocks/create-or-update/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          stock_name: stockData.stock_name,
+          stock_symbol: stockData.stock_symbol,
+          quantity: stockData.quantity || 1,
+          purchase_price: stockData?.price?.toString() || '1',
+          purchase_date,
+        }),
+      });
+
+      if (!stockPostResponse.ok) {
+        const stockError = await stockPostResponse.json();
+        throw new Error(stockError.message || 'Stock post failed');
+      }
+
+      const stockResult = await stockPostResponse.json();
+      console.log('Stock saved:', stockResult);
+
+      alert('Check portfolio in few minutes');
+    }
+
+    navigate('/');
+  } catch (err) {
+    if (err) {
+      console.error('Payment error:', err);
       setError(err.message || 'Payment failed. Please try again.');
-        }
-      
-    } finally {
-      setIsProcessing(false);
-    }}else{navigate('/')}
-  };
+    }
+  } finally {
+    setIsProcessing(false);
+  }
+};
+
  const styles = `
   body {
   font-family: "Segoe UI", sans-serif;
@@ -238,7 +241,7 @@ button {
   padding: 30px;
   background-color: #1c1f26;
   border-radius: 10px;
-  height:100vw;
+  height:50%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   text-align: center;
 }
