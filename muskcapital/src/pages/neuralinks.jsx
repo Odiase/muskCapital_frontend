@@ -36,7 +36,7 @@ const handleClick = (tier) => {
   },
   {
     name: "Pioneer Tier",
-    range: "$500,000 – $2 Million",
+    range: "$500,000 – $2,000,000",
     items: [
         "Annual ROI: 40% + potential patent equity",
         "Access: Private strategy sessions",
@@ -46,7 +46,7 @@ const handleClick = (tier) => {
     },
     {
         name: "Strategic Partner",
-        range: "$2 Million – $10 Million",
+        range: "$2,000,000 – $10,000,000",
         items: [
         "Annual ROI: 45% + 3–5% revenue participation",
         "Access: Innovation voting rights",
