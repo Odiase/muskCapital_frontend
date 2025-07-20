@@ -55,7 +55,7 @@ const styles = `
   }
 
   .login-image {
-    width: 80%;
+    width: 100%;
     height: 480px;
     object-fit: cover;
   }
