@@ -185,8 +185,9 @@ const styles = `
     color: white;
     padding: 0.6rem 0.9rem;
     border: none;
+    margin-top:7px;
     border-radius: 0.5rem;
-    font-size: 0.65rem;
+    font-size: 0.82rem;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s;
