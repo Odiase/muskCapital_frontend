@@ -4,6 +4,7 @@ import DesktopNav from '../components/desktop';
 import MobileNavbar from '../components/mobile-nav';
 import image2 from '../assets/starship_spacex.webp';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Add this CSS to your stylesheet or create a new CSS file
 const styles = `
@@ -303,17 +304,20 @@ setIsLoggingIn(true);
       <nav className="desktop-nav" style={{ color: 'white', backgroundColor: 'black', height: '70px', padding: '0px' }}>
         <div className="navdiv">
           <div id="logo">
-            <a href="#" style={{ fontFamily: 'arial', fontWeight: 'bold' }}>MuskCapital</a>
+            <Link to="/" style={{ fontFamily: 'arial', fontWeight: 'bold' }}>MuskCapital</Link>
           </div>
           <ul>
             <li>
-              <a href="">Home</a>
+              <Link to="/tesla">Tesla</Link>
+            </li>
+             <li>
+              <Link to="/spacex">SpaceX</Link>
             </li>
             <li>
-              <a href="">Portfolio</a>
+              Link to="/neurallink">Neuralink</Link>
             </li>
             <button>
-              <a href="">Login</a>
+              <Link to="/signup">Signup</Link>
             </button>
           </ul>
         </div>
