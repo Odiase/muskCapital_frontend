@@ -148,7 +148,7 @@ title: `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
         </div>
 
         {/* Main Content */}
-        <div className="layout-content-container flex flex-col max-w-[1000px] flex-1">
+        <div className="layout-content-container flex flex-col max-w-[1000px] flex-1 ml-10">
     <div className="mobile-content">
         <section>
             <div className="flex flex-wrap gap-2 px-4 py-1">
