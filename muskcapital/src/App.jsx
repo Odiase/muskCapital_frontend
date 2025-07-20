@@ -13,7 +13,7 @@ import Order from './pages/order';
 import Register from './pages/register';
 import CryptoPayment from './pages/payment';
 import Details from './pages/details';
-
+import NotFound from './pages/notfound';
 // import Details from './pages/details';
 
 
@@ -36,7 +36,7 @@ function App() {
           <Route path='portfolio' element={<Portfolio />} />
           <Route path='signup' element={<Register />} />
           <Route path='payment' element={<CryptoPayment />} />
-     
+          <Route path='*' element={<NotFound />}/>
      
 
 
