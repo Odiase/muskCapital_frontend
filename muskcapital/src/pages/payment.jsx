@@ -29,11 +29,11 @@ useEffect(() => {
     const parsed = parseFloat(incomingData.amount);
     setAmount(parsed);
     setStockData(incomingData); // ✅ Save the full stockData for later use
-    console.log(incomingData);
+    
   } else {
     setAmount(300);
     setStockData(null)
-    console.log("Missing amount in stockData:", incomingData);
+    
   }
 }, [location.state]);
 
@@ -74,7 +74,7 @@ console.log(amount);
   setIsProcessing(true);
   const token = sessionStorage.getItem('access');
 
-  console.log(token);
+
 
   try {
     const response = await fetch('https://muskcapital.onrender.com/payments/create/', {
@@ -92,7 +92,7 @@ console.log(amount);
     }
 
     const data = await response.json();
-    console.log('Payment successful:', data);
+    
 
     alert('Payment In Review');
 
@@ -119,7 +119,7 @@ console.log(amount);
       }
 
       const stockResult = await stockPostResponse.json();
-      console.log('Stock saved:', stockResult);
+      
 
       alert('Check portfolio in few minutes');
     }
@@ -341,3 +341,4 @@ button {
 };
 
 export default CryptoPayment;
+
