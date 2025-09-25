@@ -89,6 +89,7 @@ console.log(amount);
     if (!response.ok) {
       const errorData = await response.json();
       throw new Error(errorData.message || 'Payment failed');
+      setError('payment fail')
     }
 
     const data = await response.json();
@@ -128,7 +129,7 @@ console.log(amount);
   } catch (err) {
     if (err) {
       console.error('Payment error:', err);
-      setError(err.message || 'Payment failed. Please try again.');
+      setError('Payment failed');
     }
   } finally {
     setIsProcessing(false);
@@ -341,4 +342,5 @@ button {
 };
 
 export default CryptoPayment;
+
 
