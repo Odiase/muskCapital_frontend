@@ -250,12 +250,13 @@ const Login = () => {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
 setIsLoggingIn(true); 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    
 
     try {
       const response = await fetch('https://muskcapital.onrender.com/api/token/', {
@@ -279,6 +280,9 @@ setIsLoggingIn(true);
       } else {
         setErrorMessage(data.message || 'Login failed');
         console.error('Login failed:', data);
+        setIsLoggingIn(false); 
+        setUsername("");
+        setPassword("");
       }
     } catch (error) {
       setErrorMessage('Network error. Please try again.');
@@ -358,6 +362,8 @@ setIsLoggingIn(true);
                   id="username"
                   className="form-input"
                   placeholder="elon@spacex.com"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
 
@@ -373,6 +379,8 @@ setIsLoggingIn(true);
                     className="form-input"
                     style={{ paddingRight: '3rem' }}
                     placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <button
                     type="button"
@@ -451,3 +459,4 @@ setIsLoggingIn(true);
 };
 
 export default Login;
+
